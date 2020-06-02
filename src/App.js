@@ -8,6 +8,7 @@ import UserList from "./components/UserList";
 function App() {
   const [query, setQuery] = React.useState("");
   const [users, setUsers] = React.useState([]);
+  const [count,setCount] = React.useState(0);
 
   const getUsers = React.useCallback(async () => {
     const { data } = await axios.get(
@@ -27,6 +28,8 @@ function App() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
+      <button onClick={()=>setCount(prev=> prev+1)}>{count}</button>
+      
       <UserList query={query} users={users}></UserList>
     </div>
   );
